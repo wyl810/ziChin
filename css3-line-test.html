@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Document</title>
+  <style>
+    @keyframes mymove {
+      0% {
+        background-position: left top, right top, center center, 0 0;
+      }
+
+      100% {
+        background-position: left top, right top, center center, 200px 100px;
+      }
+    }
+
+    .s-line {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        width: 200px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      &:before,
+      &:after {
+        background-image:
+          linear-gradient(90deg, pink, pink),
+          linear-gradient(90deg, pink, pink),
+          radial-gradient(100px 50px, pink 90%, transparent 90%),
+          linear-gradient(90deg, red 50%, transparent 50%);
+        background-size: 200px 50px, 100px 100px, 190px 90px, 10px 100px;
+        background-position: left top, right top, center center, left top;
+        background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+        animation: mymove 5s infinite linear;
+      }
+
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="s-line"></div>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+
+</html>

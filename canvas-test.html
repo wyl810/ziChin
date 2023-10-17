@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>S-shaped River</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div>画一条河流</div>
+  <canvas
+    id="myCanvas"
+    width="400"
+    height="200"
+  ></canvas>
+  <div>虚线样式</div>
+  <canvas
+    id="myCanvas2"
+    width="400"
+    height="200"
+  ></canvas>
+  <div>动起来</div>
+  <canvas
+    id="myCanvas3"
+    width="400"
+    height="200"
+  ></canvas>
+
+
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // 设置起始点和终点坐标
+    var startX = 50;
+    var startY = canvas.height / 2;
+    var endX = canvas.width - 50;
+    var endY = canvas.height / 2;
+
+    // 设置控制点坐标
+    var controlPointX1 = (startX + endX) / 2 - 50;
+    var controlPointY1 = startY - 80;
+    var controlPointX2 = (startX + endX) / 2 + 50;
+    var controlPointY2 = startY + 80;
+
+    // 开始绘制曲线路径
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    /**
+     * bezierCurveTo 用于绘制二次贝塞尔曲线
+     * 在该方法中，有三个点参与曲线的绘制：
+     * 起始点(startX, startY)
+     * 控制点1 (controlPointX1, controlPointY1) 
+     * 控制点2 (controlPointX2, controlPointY2)
+     * 以及结束点(endX, endY)
+     * */
+    ctx.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, endX, endY);
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+  </script>
+
+  <script>
+    var canvas = document.getElementById("myCanvas2");
+    var ctx = canvas.getContext("2d");
+
+    // 设置起始点和终点坐标
+    var startX = 50;
+    var startY = canvas.height / 2;
+    var endX = canvas.width - 50;
+    var endY = canvas.height / 2;
+
+    // 设置控制点坐标
+    var controlPointX1 = (startX + endX) / 2 - 50;
+    var controlPointY1 = startY - 80;
+    var controlPointX2 = (startX + endX) / 2 + 50;
+    var controlPointY2 = startY + 80;
+
+    // 开始绘制曲线路径
+    ctx.beginPath();
+    ctx.setLineDash([5, 5]); // 设置虚线样式
+    ctx.moveTo(startX, startY);
+    ctx.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, endX, endY);
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+  </script>
+
+  <script>
+    var canvas = document.getElementById("myCanvas3");
+    var ctx = canvas.getContext("2d");
+
+    // 设置起始点和终点坐标
+    var startX = 50;
+    var startY = canvas.height / 2;
+    var endX = canvas.width - 50;
+    var endY = canvas.height / 2;
+
+    // 设置控制点坐标
+    var controlPointX1 = (startX + endX) / 2 - 50;
+    var controlPointY1 = startY - 80;
+    var controlPointX2 = (startX + endX) / 2 + 50;
+    var controlPointY2 = startY + 80;
+
+    // 设置动画状态
+    var dashOffset = 0; // 虚线偏移量
+    var dashSpeed = 1; // 虚线速度
+
+    function drawRiver () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 开始绘制曲线路径
+      ctx.beginPath();
+      ctx.setLineDash([10, 5]); // 虚线样式
+      ctx.lineWidth = 3;
+      ctx.moveTo(startX, startY);
+      ctx.bezierCurveTo(controlPointX1, controlPointY1, controlPointX2, controlPointY2, endX, endY);
+
+      ctx.strokeStyle = "blue";
+      ctx.lineDashOffset = -dashOffset; // 设置虚线偏移量
+      ctx.stroke();
+
+      // 更新虚线偏移量
+      dashOffset += dashSpeed;
+
+      // 循环调用绘制函数
+      /**
+       * `requestAnimationFrame()` 是JavaScript中的一个方法，用于在浏览器重绘之前请求执行一个动画函数。
+       * 它告诉浏览器希望执行的动画函数，并且在下一次重绘之前调用该函数。
+       * 
+       * 在这段代码中，`requestAnimationFrame(drawRiver)`被用来循环调用`drawRiver`函数，以实现动画效果。
+       * 每当浏览器准备好重绘屏幕时（通常是每秒60次），就会执行一次传递给`requestAnimationFrame()`的回调函数，也就是`drawRiver`函数。
+       * 
+       * 通过使用`requestAnimationFrame()`而不是`setTimeout()`或`setInterval()`，可以确保动画在每一帧之间平滑地过渡，并且在浏览器处于非激活状时自动停止绘制，以减少资源消耗。
+       * 总之，`requestAnimationFrame()`是用来优化动画性能并完成动画循环的特殊方法，它可以在每一帧之间调用指定的动画函数。在这个示例中，它被用于不断调用`drawRiver()`函数，从而实现虚线沿着曲线流动的效果。
+       * 
+       * */
+      requestAnimationFrame(drawRiver);
+    }
+
+    // 开始绘制
+    drawRiver();
+
+  </script>
+</body>
+
+</html>

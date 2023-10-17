@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Document</title>
+  <style>
+    body {
+      background: silver;
+    }
+
+    .card {
+      width: 452px;
+      height: 243px;
+      border-radius: 16px;
+      box-sizing: border-box;
+    }
+
+    .card1 {
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-size: 20px 100%, 20px 100%, 412px 100%;
+      background-position: 0px 0px, 432px 0px, 20px 0px;
+      background-image:
+        radial-gradient(10px at 0px 118px, transparent 100%, #FEF6E9 100%),
+        radial-gradient(10px at 20px 118px, transparent 100%, #FEF6E9 100%),
+        linear-gradient(0deg, #FEF6E9 0%, #FEF6E9 100%);
+      padding: 18px;
+    }
+
+    .card2 {
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-size: 20px 100%, 20px 100%, 412px 100%;
+      background-position: 0px 0px, 432px 0px, 20px 0px;
+      /* 1. 圆半径10px => x轴0px y轴50% */
+      background-image:
+        radial-gradient(10px at 0px 50%, red 100%, green 100%),
+        radial-gradient(10px at 20px 50%, red 100%, green 100%),
+        linear-gradient(0deg, red 0%, green 50%, blue 100%);
+      padding: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card card1"></div>
+  <div class="card card2"></div>
+</body>
+
+</html>
