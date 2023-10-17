@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>vue3-test</title>
+  <style>
+    html,
+    body {
+      font-family: serif, monospace, fangsong, cursive;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 我们可以使用导入映射表 (Import Maps) 来告诉浏览器如何定位到导入的 vue： -->
+  <!-- "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js" -->
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "./vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <div
+    id="app"
+    v-cloak
+  ></div>
+
+  <pre>
+    &lt;script type="module">
+      import { createApp } from 'vue'
+      import App from './app.js'
+      createApp(App).mount('#app')
+    &lt;/script>
+  </pre>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    import App from './app.js'
+    createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
