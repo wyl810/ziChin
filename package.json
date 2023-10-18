@@ -1,0 +1,15 @@
+{
+  "name": "www.zichin.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "execute-bat": "push.bat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/ziChin/www.zichin.com.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
