@@ -5,3 +5,4 @@ git pull  # 执行 git pull 命令来更新代码库
 git add .
 git commit -m "feat: build"
 git push
+exit
