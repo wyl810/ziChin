@@ -13,9 +13,11 @@ export default {
     }
   },
   template: `
-    <div> 
+    <div>
+      <div> app: </div>
       <div> app message is{{ message }} </div>
       <div> provide is {{ appInfo }} </div>
+      <hr>
       <MyComponent></MyComponent>
     </div>
   `,

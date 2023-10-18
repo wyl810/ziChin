@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>vue3-test</title>
+  <style>
+    html,
+    body,
+    pre {
+      font-family: cursive, fangsong, serif, monospace;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 我们可以使用导入映射表 (Import Maps) 来告诉浏览器如何定位到导入的 vue： -->
+  <!-- "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js" -->
+  <script type=importmap>
+    {
+      "imports": {
+        "vue": "./vue.esm-browser.js"
+      }
+    }
+  </script>
+
+  <div
+    id="app"
+    v-cloak
+  ></div>
+
+  <hr>
+  <div>
+    1、告诉浏览器如何定位到导入的 vue
+    <pre style="font-style: italic;">
+      &lt;script type=importmap>
+        {
+          "imports": {
+            "vue": "./vue.esm-browser.js"
+          }
+        }
+        &lt;/script>
+    </pre>
+    2、引入vue
+    <pre style="font-style: italic;">
+      &lt;script type="module">
+        import { createApp } from 'vue'
+        import App from './app.js'
+        createApp(App).mount('#app')
+      &lt;/script>
+    </pre>
+    3、app.js
+    <pre style="font-style: italic;">
+      import { ref, provide, reactive } from 'vue'
+      import MyComponent from './my-component.js'
+      export default {
+        setup () {
+          const message = ref('Hello Vue!')
+          const appInfo = reactive({
+            title: 'vue3-test'
+          })
+          provide('app-info', appInfo)
+          return {
+            message,
+            appInfo
+          }
+        },
+        template: `
+          &lt;div>
+            ...
+            &lt;MyComponent>&lt;/MyComponent>
+          &lt;/div>
+        `,
+        components: {
+          MyComponent
+        }
+      }
+    </pre>
+    4、my-component.js
+    <pre style="font-style: italic;">
+      import { ref, inject } from 'vue'
+      export default {
+        setup() {
+          const count = ref(0)
+          const appInfo = inject('app-info')
+          return {
+            count,
+            appInfo,
+          }
+        },
+        template: `&lt;div>
+            &lt;div> child: &lt;/div>
+            &lt;div> count is {{ count }} &lt;/div>
+            &lt;div> inject appInfo is {{ appInfo }} &lt;/div>
+          &lt;/div>`,
+      }
+    </pre>
+  </div>
+
+  <script type=module>
+    import { createApp } from 'vue'
+    import App from './app.js'
+    createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>

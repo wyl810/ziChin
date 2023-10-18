@@ -9,7 +9,7 @@ export default {
 			appInfo,
 		}
 	},
-	template: `<div style="border: 1px solid silver;">
+	template: `<div>
       <div> child: </div>
       <div> count is {{ count }} </div>
       <div> inject appInfo is {{ appInfo }} </div>
