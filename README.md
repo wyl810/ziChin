@@ -10,5 +10,8 @@ PS D:\www.zichin.com>  git branch --set-upstream-to=gitee/master
 PS D:\www.zichin.com>  git branch --set-upstream-to=github/master
 PS D:\www.zichin.com> git pull --all
 PS D:\www.zichin.com> git push --all
+
+PS D:\www.zichin.com> git push gitee master
+PS D:\www.zichin.com> git push github master
 ```
 2. test

@@ -3,5 +3,6 @@
 git pull
 git add .
 git commit -m "feat: build"
-git push --all
+git push gitee master
+git push github master
 exit
