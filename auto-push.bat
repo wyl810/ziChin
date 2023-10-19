@@ -3,5 +3,5 @@
 git pull
 git add .
 git commit -m "feat: build"
-git push
+git push --all
 exit
