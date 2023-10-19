@@ -11,3 +11,4 @@ PS D:\www.zichin.com>  git branch --set-upstream-to=github/master
 PS D:\www.zichin.com> git pull --all
 PS D:\www.zichin.com> git push --all
 ```
+2. test
