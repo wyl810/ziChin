@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "auto-push": "auto-push.bat"
+    "auto-push": "auto-push.bat",
+    "live-server": "live-server.bat"
   },
   "repository": {
     "type": "git",
