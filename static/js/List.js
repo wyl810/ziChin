@@ -1,15 +1,13 @@
 // List.js
-import { ref, inject } from 'vue'
+import { inject } from 'vue'
 export default {
-	setup() {
-		const count = ref(0)
-		const { data } = inject('app-data')
-		return {
-			count,
-			data,
-		}
-	},
-	template: `
+  setup() {
+    const { data } = inject('app-data')
+    return {
+      data,
+    }
+  },
+  template: `
   <section class="content">
 
       <ul v-for="{ title, list } in data">
